@@ -4,10 +4,11 @@ from src.masks import get_mask_account, get_mask_card_number
 def mask_account_card(type_and_number: str) -> str:
     """Функция маскировки типа и номер карты или счет"""
 
-    if "Cчет" in type_and_number.lower():
-        number_account = type_and_number[-10:]
+    type_number = type_and_number.lower()
+    if "cчет" in type_number:
+        number_account = type_and_number[-6:]
         masked_account = get_mask_account(number_account)
-        return f"Cчет {masked_account}"
+        return f"Счет {masked_account}"
     else:
         number_card = type_and_number[-16:]
         masked_card = get_mask_card_number(number_card)
@@ -18,7 +19,7 @@ def mask_account_card(type_and_number: str) -> str:
 if __name__ == "__main__":
     print(mask_account_card("MasterCard 7158300734726758"))
 
-    print(get_mask_account("Cчет 73654108430135874305"))
+    print(mask_account_card("Cчет 73654108430135874305"))
 
 
 def get_date(format_data: str) -> str:
