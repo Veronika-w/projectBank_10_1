@@ -1,4 +1,7 @@
-def filter_by_state(list_dict, state='EXECUTE'):
+def filter_by_state(list_dict, state='EXECUTED'):
+    """ Функция возвращает новый список словарей,
+содержащий только те словари, у которых ключ
+state соответствует указанному значению"""
     return [x for x in list_dict if x['state'] == state]
 
 
@@ -16,6 +19,8 @@ print(filter_by_state(list_dict))
 
 
 def sort_by_date(list_dict, reverse=False):
+    """. Функция,которая возвращает новый список,
+    отсортированный по дате"""
     sort_date = sorted(list_dict, key=lambda x: x['date'], reverse=reverse)
     return sort_date
 
