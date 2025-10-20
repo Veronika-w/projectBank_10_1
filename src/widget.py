@@ -13,7 +13,7 @@ def mask_account_card(type_and_number: str) -> str:
         number_card = type_and_number[-16:]
         masked_card = get_mask_card_number(number_card)
         type_card = type_and_number[:-16]
-    return f"{type_card} {masked_card}"
+    return f"{type_card}{masked_card}"
 
 
 if __name__ == "__main__":
