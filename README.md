@@ -36,6 +36,17 @@ filter_status = filter_by_state(list_dict)
 ## Сортировка по дате
 sorted_date = sort_by_date(list_dict)
 
+from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+## Фильтрация по транзакциям
+filter_transact = filter_by_currency(list_transactions)
+
+## Фильтрация по операциям
+descrip_operation = transaction_descriptions(list_transactions)
+
+## Вывод номера карты в формате XXXX XXXX XXXX XXXX
+number_card = card_number_generator (0, 9999999999999999)
+
 ## Тестирование
 Для тестирование используется библиотека pytest.
 
