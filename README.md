@@ -47,6 +47,9 @@ descrip_operation = transaction_descriptions(list_transactions)
 ## Вывод номера карты в формате XXXX XXXX XXXX XXXX
 number_card = card_number_generator (0, 9999999999999999)
 
+## Добавлен декоратор log 
+который будет автоматически логировать начало и конец выполнения функции, а также ее результаты или возникшие ошибки.
+
 ## Тестирование
 Для тестирование используется библиотека pytest.
 
