@@ -22,7 +22,7 @@ def log(filename):
             except Exception as e:
                 error_message = (f"Функция: {func.__name__}\n Тип ошибки: {e} \n Входные параметры: {args}, {kwargs}\n")
                 if filename:
-                    with open(filename, "a") as log_file:
+                    with open(filename, "a", encoding='utf-8') as log_file:
                         log_file.write(error_message)
                 else:
                     print(error_message)
@@ -32,9 +32,9 @@ def log(filename):
     return wrapper
 
 
-
 @log(filename="../mylog.txt")
 def my_function(x, y):
     return x + y
+
 
 my_function(1, 2)
