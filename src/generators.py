@@ -83,7 +83,7 @@ def card_number_generator(start_number: int, end_number: int) -> Iterator[str]:
     XXXX XXXX XXXX XXXX, где X — цифра номера карты"""
     for number in range(start_number, end_number + 1):
         card_num = f"{number:016d}"
-        formatted = " ".join([card_num[i : i + 4] for i in range(0, 16, 4)])
+        formatted = " ".join([card_num[i:i + 4] for i in range(0, 16, 4)])
         yield formatted
 
 
