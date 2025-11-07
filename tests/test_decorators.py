@@ -27,5 +27,15 @@ def test_my_function_consol(capsys):
     assert "" in captured.out
 
 
+def test_log_decor():
+    @log()
+    def my_function(x, y):
+        return x + y
+
+    assert my_function(1, 2) == 3
+    assert my_function(2, 3) == 5
+    assert my_function(4, 5) == 9
+
+
 if __name__ == "__main__":
     pytest.main()
