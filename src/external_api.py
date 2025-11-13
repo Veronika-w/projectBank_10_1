@@ -22,7 +22,7 @@ def convert_to_rub(transaction: dict) -> float:
     elif currency_from == {}:
         return amount
     else:
-       #response = requests.get ( f"https://api.apilayer.com/exchangerates_data/convert?to={currency_to}&from={currency_from}&amount={amount}")
+        response = requests.get ( f"https://api.apilayer.com/exchangerates_data/convert?to={currency_to}&from={currency_from}&amount={amount}")
         response = requests.request("GET", url, headers=headers, data=payload)
         status_code = response.status_code
         result = response.text
