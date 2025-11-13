@@ -26,8 +26,10 @@ def log(filename: Optional[str] = None):
                 return result
 
             except Exception as e:
-                error_message = (f"Функция: {func.__name__}\n Тип ошибки: {type(e).__name__}\n "
-                                 f"Входные параметры: {args}, {kwargs}\n")
+                error_message = (
+                    f"Функция: {func.__name__}\n Тип ошибки: {type(e).__name__}\n "
+                    f"Входные параметры: {args}, {kwargs}\n"
+                )
                 if filename:
                     with open(filename, "a", encoding="utf-8") as log_file:
                         log_file.write(error_message)
