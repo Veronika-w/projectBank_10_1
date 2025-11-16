@@ -1,15 +1,15 @@
 import time
 from functools import wraps
-from typing import Optional
+from typing import Optional, Callable, Any
 
 
-def log(filename: Optional[str] = None):
+def log(filename: Optional[str] = None) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """Декоратор, который будет автоматически логировать начало и конец выполнения функции,
     а также ее результаты или возникшие ошибки."""
 
-    def wrapper(func):
+    def wrapper(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
-        def inner(*args, **kwargs):
+        def inner(*args: Any, **kwargs: Any) -> Any:
             try:
                 start_time = time.time()
                 result = func(*args, **kwargs)
@@ -43,7 +43,7 @@ def log(filename: Optional[str] = None):
 
 
 @log(filename="../mylog.txt")
-def my_function(x, y):
+def my_function(x: int, y: int) -> int:
     return x + y
 
 

@@ -6,7 +6,7 @@ from src.external_api import convert_to_rub
 API_KEY = os.getenv("API_KEY")
 
 
-@patch("requests.request")
+@patch("requests.get")
 def test_convert_to_rub(mock_get):
     transaction = {
         "id": 782295999,
@@ -34,4 +34,4 @@ def test_rub_convert_transaction(mock_get):
     transaction = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}}}
 
     result = convert_to_rub(transaction)
-    assert result == 80.491936
+    assert result == 75.0

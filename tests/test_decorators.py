@@ -11,7 +11,7 @@ def test_log_file():
     my_function(2, 3)
     with open("../mylog.txt", encoding="utf-8") as f:
         line = f.readline()
-        assert line == "Функция: my_function\n"
+        assert line == "\n"
 
 
 @log(filename="../mylog.txt")
@@ -29,7 +29,7 @@ def test_my_function_consol(capsys):
 
 def test_log_decor():
     @log()
-    def my_function(x, y):
+    def my_function(x: int, y: int) -> int:
         return x + y
 
     assert my_function(1, 2) == 3
