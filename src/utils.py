@@ -11,12 +11,11 @@ def read_json_operation(path: str) -> Any:
                 return []
             return data
     except FileNotFoundError:
-        print ("Файл не найден")
+        print("Файл не найден")
         return []
     except json.JSONDecodeError:
         print("Ошибка декодирования файла")
         return []
-
 
 
 if __name__ == "__main__":

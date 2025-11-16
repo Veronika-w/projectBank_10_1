@@ -1,4 +1,5 @@
 import os
+from typing import Any
 
 import requests
 from dotenv import load_dotenv
@@ -8,10 +9,10 @@ load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 
-def convert_to_rub(transaction: dict) -> float:
+def convert_to_rub(transaction: dict) -> Any:
     """Функция осуществляет конвертацию суммы транзакции в рубли"""
     try:
-        amount = transaction["operationAmount"]["amount"]
+        amount = float(transaction["operationAmount"]["amount"])
 
         currency = transaction["operationAmount"]["currency"]["code"]
         currency_rub = "RUB"
@@ -19,17 +20,19 @@ def convert_to_rub(transaction: dict) -> float:
         if currency != "RUB":
             url = f"https://api.apilayer.com/exchangerates_data/convert?to={currency_rub}&from={currency}&amount={amount}"
             headers = {"apikey": API_KEY}
-            response = requests.get("GET", url, headers=headers)
+            response = requests.request("GET", url, headers=headers)
             status_code = response.status_code
             result = response.json()
             if status_code == 200:
                 return result["result"]
-            else:
-                return f"Запрос не выполнен.\nКод ошибки: {status_code}.\nОписание ошибки: {result}."
+            if status_code != 200:
+                print(f"Ошибка запроса: Код {status_code}, Описание: {result}")
+                return 0.0
         else:
             return amount
     except Exception as e:
-                print(f"Ошибка конвертации: {e}")
+        print(f"Ошибка конвертации: {e}")
+        return 0.0
 
 
 print(
