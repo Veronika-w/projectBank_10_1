@@ -1,10 +1,8 @@
 import json
 from typing import Any
 from unittest import mock
-from unittest.mock import mock_open, patch
 
 from src.utils import read_json_operation
-
 
 # @patch("builtins.open", new_callable=mock_open, read_data='{"key": "value"}')
 # @patch("os.path.exists")

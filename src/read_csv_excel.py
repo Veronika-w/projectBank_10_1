@@ -1,13 +1,14 @@
 import csv
-import pandas as pd
 from typing import Any, Dict
+
+import pandas as pd
 
 
 def read_transactions_csv(file_path: str) -> list:
     """Считывает финансовые операции из CSV-файла и возвращает список словарей с транзакциями"""
     try:
         transactions_csv = []
-        with open(file_path, 'r', newline='', encoding='utf-8') as csv_file:
+        with open(file_path, "r", newline="", encoding="utf-8") as csv_file:
             rd_transactions_csv = csv.DictReader(csv_file)
             next(rd_transactions_csv)
             for row in rd_transactions_csv:
@@ -26,8 +27,8 @@ def read_transactions_excel(file_path: str) -> list[Dict[str, Any]]:
     словарей с транзакциями."""
     try:
         df = pd.read_excel(file_path)
-        df['id', 'amount'] = df['id', 'amount'].astype(int)
-        print(df.to_dict(orient='records'))
+        df["id", "amount"] = df["id", "amount"].astype(int)
+        print(df.to_dict(orient="records"))
 
     except FileNotFoundError:
         return []
