@@ -21,8 +21,6 @@ if __name__ == "__main__":
     print(read_transactions_csv("C:/Users/i3/my_pj/pythonBank/data/transactions.csv"))
 
 
-
-
 def read_transactions_excel(file_path: str) -> list[Dict[str, Any]]:
     """Функция считывает финансовые операции из Excel - файла и выдает список
     словарей с транзакциями."""
@@ -32,8 +30,6 @@ def read_transactions_excel(file_path: str) -> list[Dict[str, Any]]:
         print(df.to_dict(orient='records'))
 
     except FileNotFoundError:
-        return []
-    except Exception as e:
         return []
 
 
