@@ -11,7 +11,7 @@ def test_log_file():
     my_function(2, 3)
     with open("../mylog.txt", encoding="utf-8") as f:
         line = f.readline()
-        assert line == "\n"
+        assert line == "Функция: my_function\n"
 
 
 @log(filename="../mylog.txt")
