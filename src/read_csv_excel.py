@@ -1,5 +1,4 @@
 import json
-from typing import Any, Dict
 
 import pandas as pd
 
@@ -18,14 +17,14 @@ def read_transactions_csv(file_path: str) -> list:
 print(read_transactions_csv('C:/Users/i3/my_pj/pythonBank/data/transactions.csv'))
 
 
-def read_transactions_excel(file_path: str) -> list[Dict[str, Any]]:
+def read_transactions_excel(path: str) -> list[dict]:
     """Функция считывает финансовые операции из Excel - файла и выдает список
     словарей с транзакциями."""
     try:
-        df_excel = pd.read_excel(file_path)
-        df_excel['id', 'amount'] = df_excel['id', 'amount'].astype(int)
-        print(df_excel.to_dict(orient='records'))
-    except FileNotFoundError:
+        df_excel = pd.read_excel(path)
+        transactions = df_excel.to_dict(orient='records')
+        return transactions
+    except Exception:
         return []
 
 
