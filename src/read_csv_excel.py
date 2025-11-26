@@ -14,7 +14,7 @@ def read_transactions_csv(file_path: str) -> list:
         return []
 
 
-print(read_transactions_csv("C:/Users/i3/my_pj/pythonBank/data/transactions.csv"))
+print(read_transactions_csv("../data/transactions.csv"))
 
 
 def read_transactions_excel(path: str) -> list[dict]:
@@ -29,4 +29,4 @@ def read_transactions_excel(path: str) -> list[dict]:
 
 
 if __name__ == "__main__":
-    print(read_transactions_excel("C:/Users/i3/my_pj/pythonBank/data/transactions_excel.xlsx"))
+    print(read_transactions_excel("../data/transactions_excel.xlsx"))
