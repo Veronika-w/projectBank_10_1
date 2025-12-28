@@ -1,22 +1,4 @@
-import pytest
-
 from src.bank_operations import process_bank_operations, process_bank_search
-
-# @pytest.fixture()
-# def operations():
-#     result = [{"description": "Перевод организации"},
-#             {"description": "Перевод с карты на карту"},
-#             {"description": "Открытие вклада"}]
-#     return result
-#
-#
-# def test_process_bank_search(operations):
-#     result = process_bank_search("открытие")
-#     expected = [{"description": "Открытие вклада"}]
-#     assert result == expected
-#
-# def test_process_bank_operations():
-#     assert process_bank_operations(operations, ["Перевод организации"]) == {"Перевод организации": 2}
 
 
 def test_process_bank_search_match() -> None:
@@ -28,3 +10,12 @@ def test_process_bank_search_match() -> None:
     ]
     search_string = "Перевод организации"
     assert process_bank_search(transactions, search_string) == [{"description": "Перевод организации"}]
+
+def test_process_bank_operations() -> None:
+    assert process_bank_operations([], []) == {}
+    assert process_bank_operations([], ["Перевод организации", "Открытие вклада",
+                                        "Перевод с карты на счет", "Перевод с карты на карту"]) == {}
+
+
+
+
