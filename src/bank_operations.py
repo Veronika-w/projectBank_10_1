@@ -70,10 +70,10 @@ def process_bank_operations(transactions: dict) -> str:
         else:
             yield ''
 
-if __name__ == '__main__':
-    for transaction in my_transactions:
-        transactions_date = transaction['date']
-        transaction_description = transaction['description']
-        print(process_bank_search(transactions_date), transaction_description)
+# if __name__ == '__main__':
+#     for transaction in my_transactions:
+#         transactions_date = transaction['date']
+#         transaction_description = transaction['description']
+#         print(process_bank_search(transactions_date), transaction_description)
 
 

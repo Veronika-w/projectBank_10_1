@@ -16,7 +16,7 @@ list_dict = [
 ]
 
 
-print(filter_by_state(list_dict))
+# print(filter_by_state(list_dict))
 
 
 def sort_by_date(list_dict: list[dict], reverse: bool = False) -> List[Dict]:
@@ -26,4 +26,4 @@ def sort_by_date(list_dict: list[dict], reverse: bool = False) -> List[Dict]:
     return sort_date
 
 
-print(sort_by_date(list_dict))
+# print(sort_by_date(list_dict))
