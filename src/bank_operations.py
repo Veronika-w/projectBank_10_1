@@ -1,7 +1,7 @@
 import re
+from collections import Counter
 
-
-my_transactions = [{
+operations = [{
     "id": 214024827,
     "state": "EXECUTED",
     "date": "2018-12-20T16:43:26.929246",
@@ -45,7 +45,22 @@ my_transactions = [{
     "description": "Перевод с карты на карту",
     "from": "Visa Classic 6831982476737658",
     "to": "Visa Platinum 8990922113665229"
-  }]
+  },
+    {
+        "id": 587085106,
+        "state": "EXECUTED",
+        "date": "2018-03-23T10:45:06.972075",
+        "operationAmount": {
+            "amount": "48223.05",
+            "currency": {
+                "name": "руб.",
+                "code": "RUB"
+            }
+        },
+        "description": "Открытие вклада",
+        "to": "Счет 41421565395219882431"
+    }
+]
 
 
 
@@ -61,17 +76,17 @@ def process_bank_search(user_date: str) -> str:
 
 
 
-def process_bank_operations(transactions: dict) -> str:
-    for transaction in transactions:
-        """Условие, проверяющее наличие ключа в словаре"""
-        if "description" in transaction:
-            """Если ключ найден, выводит назначение транзикции"""
-            yield transaction["description"]
-        else:
-            yield ''
+def process_bank_operations(data: list[dict], categories: list) -> dict:
+    categories_counter = Counter()
+    for operation in data:
+        description = operation.get("description", "")
+        for category in categories:
+            if category.lower() in description.lower():
+                categories_counter[category] += 1
+    return categories_counter
 
 # if __name__ == '__main__':
-#     for transaction in my_transactions:
+#     for transaction in operations:
 #         transactions_date = transaction['date']
 #         transaction_description = transaction['description']
 #         print(process_bank_search(transactions_date), transaction_description)

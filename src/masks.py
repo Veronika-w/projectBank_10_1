@@ -1,8 +1,11 @@
 import logging
+import os
 
 logger = logging.getLogger("masks")
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler("../logs/masks.log", encoding="utf-8")
+log_dir = os.path.join(os.path.dirname(__file__), '../logs')
+log_file = os.path.join(log_dir, 'masks.log')
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -21,9 +24,9 @@ def get_mask_card_number(card_number: str) -> str:
     except Exception as ex:
         logger.error(f"Произошла ошибка: {ex}")
 
-
-print(get_mask_card_number("7000792289606361"))
-print(get_mask_card_number("700079228960636"))
+#
+# print(get_mask_card_number("7000792289606361"))
+# print(get_mask_card_number("700079228960636"))
 
 
 def get_mask_account(account_number: str) -> str:
@@ -40,6 +43,6 @@ def get_mask_account(account_number: str) -> str:
     except Exception as ex:
         logger.error(f"Произошла ошибка: {ex}")
 
-
-print(get_mask_account("736541084301358714305"))
-print(get_mask_account("85305"))
+#
+# print(get_mask_account("736541084301358714305"))
+# print(get_mask_account("85305"))

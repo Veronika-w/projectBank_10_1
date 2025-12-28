@@ -77,3 +77,4 @@ def main():
 
     print(f"Всего банковских операций в выборке: {len(filtered_transactions)}")
 
+print(main())
