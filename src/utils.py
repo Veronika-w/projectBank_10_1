@@ -5,9 +5,9 @@ from typing import Any
 
 logger = logging.getLogger("utils")
 logger.setLevel(logging.INFO)
-log_dir = os.path.join(os.path.dirname(__file__), '../logs')
-log_file = os.path.join(log_dir, 'utils.log')
-file_handler = logging.FileHandler(log_file, encoding='utf-8')
+log_dir = os.path.join(os.path.dirname(__file__), "../logs")
+log_file = os.path.join(log_dir, "utils.log")
+file_handler = logging.FileHandler(log_file, encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -39,6 +39,8 @@ def read_json_operation(json_path: str) -> Any:
     except Exception:
         logger.exception("Критическая ошибка при работе с файлом")
     return []
+
+
 #
 #
 # if __name__ == "__main__":
