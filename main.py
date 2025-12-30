@@ -22,7 +22,6 @@ def main():
     if file_format == '1':
         print("Для обработки выбран JSON-файл.")
         transactions = read_json_operation(json_path)
-        print(transactions)
     elif file_format == '2':
         print("Для обработки выбран CSV-файл.")
         transactions = read_transactions_csv(csv_path)
@@ -52,7 +51,7 @@ def main():
     if sort_date in ['да', 'yes']:
         sort_order = input("Отсортировать по возрастанию или по убыванию?\n").strip().lower()
         filtered_transactions = sort_by_date(filtered_transactions,
-                                             ascending=(sort_order in ['по возрастанию', 'ascending']))
+                                             reverse=(sort_order not in ['по возрастанию', 'ascending']))
     print(filtered_transactions)
 
 
