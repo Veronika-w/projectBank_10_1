@@ -4,7 +4,7 @@ import pandas as pd
 def read_transactions_csv(csv_path: str) -> list[dict]:
     """Считывает финансовые операции из CSV-файла и возвращает список словарей с транзакциями"""
     try:
-        df_csv = pd.read_csv(csv_path)
+        df_csv = pd.read_csv(csv_path, sep=';')
         # print(df.head())
         df_dict_csv = df_csv.to_dict("records")
         # print(df_dict)
