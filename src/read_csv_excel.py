@@ -9,11 +9,11 @@ def read_transactions_csv(csv_path: str) -> list[dict]:
         df_dict_csv = df_csv.to_dict("records")
         # print(df_dict)
         return df_dict_csv
-    except FileExistsError:
+    except FileNotFoundError:
         return []
 
-# if __name__ == "__main__":
-#     print(read_transactions_csv("../data/transactions.csv"))
+if __name__ == "__main__":
+    print(read_transactions_csv("../data/transactions.csv"))
 
 
 def read_transactions_excel(excel_path: str) -> list[dict]:

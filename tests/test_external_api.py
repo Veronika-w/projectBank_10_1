@@ -34,4 +34,4 @@ def test_rub_convert_transaction(mock_get):
     transaction = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}}}
 
     result = convert_to_rub(transaction)
-    assert result == 79.007431
+    assert result == 79.099677

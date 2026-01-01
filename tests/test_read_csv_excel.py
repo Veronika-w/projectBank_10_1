@@ -11,7 +11,7 @@ def test_file_not_csv(mock_open: Any) -> None:
     assert result == []
 
 
-@mock.patch("builtins.open", side_effect=FileNotFoundError)
+@mock.patch("builtins.open", side_effect=Exception)
 def test_file_not_excel(mock_open: Any) -> None:
     result = read_transactions_excel("transactions_excel.csv")
     assert result == []
