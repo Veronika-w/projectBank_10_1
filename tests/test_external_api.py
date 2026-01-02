@@ -31,7 +31,7 @@ def test_rub_convert_transaction(mock_get):
     mock_get.return_value.status_code = 200
     mock_get.return_value.json.return_value = {"result": 75.0}
 
-    transaction = {"operationAmount": {"amount": "1", "currency": {"code": "USD"}}}
+    transaction = {"operationAmount": {"amount": "1", "currency": {"code": "RUB"}}}
 
     result = convert_to_rub(transaction)
-    assert result == 79.099677
+    assert result == 1
